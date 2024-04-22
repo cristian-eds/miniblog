@@ -19,6 +19,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import CreatePost from "./pages/createPost/CreatePost";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Search from "./pages/search/Search";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -61,6 +62,11 @@ function App() {
                 path="/dashboard"
                 element={user ? <Dashboard /> : <Navigate to="/login" />}
               />
+              <Route
+                path="/search"
+                element={user ? <Search /> : <Navigate to="/search" />}
+              />
+              
             </Routes>
           </div>
           <Footer />

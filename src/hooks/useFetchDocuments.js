@@ -27,7 +27,8 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
         let q;
 
         if(search) {
-          q = await query(collectionRef, where("tags","array-contains", search), orderBy("createdAt","desc"))
+          console.log(typeof search);
+          q = await query(collectionRef, where("tags","array-contains", search), orderBy("createAt","desc"));
         } else {
           q = await query(collectionRef, orderBy("createAt", "desc"));
         }
@@ -41,14 +42,14 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
           );
         });
 
-        setLoading(false);
-
       } catch (error) {
         console.log(error);
         setError
         (error.message);
-        setLoading(false);
+        
       }
+    
+      setLoading(false);
     }
 
     loadData();
@@ -58,6 +59,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
   useEffect(() => {
     return () => setCancelled(true);
   },[])
+
 
   return {documents, loading, error};
 };

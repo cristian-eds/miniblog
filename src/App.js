@@ -20,6 +20,7 @@ import Register from "./pages/register/Register";
 import CreatePost from "./pages/createPost/CreatePost";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Search from "./pages/search/Search";
+import Post from "./pages/post/Post";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -66,8 +67,12 @@ function App() {
                 path="/search"
                 element={user ? <Search /> : <Navigate to="/search" />}
               />
+               <Route
+                path="/posts/:id"
+                element={<Post />}
+              />
               
-            </Routes>
+          </Routes>
           </div>
           <Footer />
         </BrowserRouter>

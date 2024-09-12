@@ -7,16 +7,16 @@
 }
 
 .post_detail h2 {
-    margin-bottom: 4em;
+    margin-bottom: 0.4em;
 }
 
 .post_detail .tags {
-    margin-bottom: 2em;
+    margin-bottom: 1.2em;
     display: flex;
 }
 
 .tags p {
-    margin-right: .5em;
+    margin-right: 0.5em;
 }
 
 .tags span {

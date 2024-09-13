@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useState, useReducer, useEffect } from "react";
 import { db } from "../firebase/config";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 
@@ -33,7 +33,7 @@ export const useInsertDocument = (docCollection) => {
   };
 
   const insertDocument = async (document) => {
-    checkCancelBeforeDispatch({ type: "LOADING"});
+    checkCancelBeforeDispatch({ type: "LOADING" });
     try {
       const newDocument = { ...document, createAt: Timestamp.now() };
       const insertedDocument = await addDoc(
@@ -42,15 +42,15 @@ export const useInsertDocument = (docCollection) => {
       );
       checkCancelBeforeDispatch({ type: "INSERTED_DOC", payload: insertedDocument });
 
-      
+
     } catch (error) {
       checkCancelBeforeDispatch({ type: "ERROR", payload: error.message });
     }
   };
 
-  // useEffect(() => {
-  //   return () => setCancelled(true);
-  // }, []);
+  useEffect(() => {
+    return () => setCancelled(true);
+  }, []);
 
   return { insertDocument, response };
 };
